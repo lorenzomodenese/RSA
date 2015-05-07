@@ -79,11 +79,10 @@ def egcd(a, b):
     gcd = b
     return gcd, x, y
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
     
     # get a random prime 500 bits long
     #print(getPrimeNumber(1024))
-    
     
     #a = 21
     #b = 1024
@@ -91,4 +90,10 @@ def egcd(a, b):
     #if x<0:
     #    x = x + b
     #print a,"*",x,"=",gcd, "( mod", b, ")"
+
+    a = 20
+    b = 7
+    gcd, x, y = egcd(a, b) 
+    print a,"*",x,"+",b,"*",y,"=",gcd
+
 
