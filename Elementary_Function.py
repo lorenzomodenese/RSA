@@ -9,7 +9,7 @@ def rabinMiller(n):
          s = s/2
          t +=1
      k = 0
-     while k<Util.N_BASES:
+     while k<128:
          a = random.randrange(2,n-1)
          #a^s is computationally infeasible.  we need a more intelligent approach
          #v = (a**s)%n
@@ -79,14 +79,16 @@ def egcd(a, b):
     gcd = b
     return gcd, x, y
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     
     # get a random prime 500 bits long
-    #print(GetPrimeNumber(1024))
+    #print(getPrimeNumber(1024))
     
-    a = 102
-    b = 21
-    gcd, x, y = egcd(a, b) 
-    print a,"*",x,"+",b,"*",y,"=",gcd
-
+    
+    #a = 21
+    #b = 1024
+    #gcd, x, y = egcd(a, b)
+    #if x<0:
+    #    x = x + b
+    #print a,"*",x,"=",gcd, "( mod", b, ")"
 
