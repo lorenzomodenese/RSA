@@ -1,7 +1,6 @@
 import random
 import math
 import sys
-import Util
 
 def rabinMiller(n):
      s = n-1
@@ -83,6 +82,11 @@ def egcd(a, b):
 if __name__ == "__main__":
     
     # get a random prime 500 bits long
-    print(GetPrimeNumber())
+    #print(GetPrimeNumber(1024))
+    
+    a = 102
+    b = 21
+    gcd, x, y = egcd(a, b) 
+    print a,"*",x,"+",b,"*",y,"=",gcd
 
 
