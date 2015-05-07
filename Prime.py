@@ -1,6 +1,7 @@
 import random
 import math
 import sys
+import Util
 
 def rabinMiller(n):
      s = n-1
@@ -64,8 +65,8 @@ def generateLargePrime(k):
      #return "Failure after "+`r_` + " tries."
      return False
 
-def GetPrimeNumber(nbits):
-    #nbits = get from util
+def GetPrimeNumber():
+    nbits = Util.NBITS
     p = generateLargePrime(nbits)
     while not p:
         p = generateLargePrime(nbits)
@@ -74,6 +75,6 @@ def GetPrimeNumber(nbits):
 if __name__ == "__main__":
     
     # get a random prime 500 bits long
-    print(GetPrimeNumber(1024))
+    print(GetPrimeNumber())
 
 
