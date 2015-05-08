@@ -8,7 +8,7 @@ import time
 import thread
 
 def publishKeys(nome,n,e):
-    print "Pronto a fornire le chiavi"
+    print "Pronto a fornire le chiavi..."
     #nota che la porta deve essere diversa da quella per i dati porta 9091!
     socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER_KEYS)
     while 1:
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     except Exception as w:
         print w,"Errore creazione thread"
 
-    print "Pronto a ricevere file cifrati..."
+    print "\nPronto a ricevere file cifrati..."
     socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER)
     while 1:
         sapp, ip=socket.accept()

@@ -30,8 +30,8 @@ def encode_and_send(e, n):
     print "inizio cifratura"
     for i in range(bytes.length()/64):
         data = bytes[(0+(64*i)):(64+(64*i))]
-        message=int(str(data),2)
-        cypher= pow(message, e, n)
+        message=int(data.to01(),2)
+        cypher= pow(int(message), int(e), int(n))
         cypher_list.append(cypher)
 
     print "Serializzo il cifrato"

@@ -30,10 +30,10 @@ N_BASES = 128  #numero di basi da testare per il test di millen rabin, in realta
 
 
 global inputFile
-inputFile = "immagine.raw"
+inputFile = "immagine.png"
 
 global encodedFile
-encodedFile = "encoded.raw"
+encodedFile = "encoded.png"
 
 global decodedFile
-decodedFile = "decoded.raw"
+decodedFile = "decoded.png"
