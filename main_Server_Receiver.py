@@ -68,7 +68,7 @@ if __name__ == "__main__":
         for i in range(0,len(cypher_list_deserialized)):
             decifrato= pow(int(cypher_list_deserialized[i]), int(d), int(n))
             decifrato_bitarray=bitarray.bitarray("{0:b}".format(decifrato))
-            for a in range (len(decifrato_bitarray), 64)
+            for a in range (len(decifrato_bitarray), 64):
                 decifrato_bitarray.insert(0,0)
             output.append(decifrato_bitarray)
 
