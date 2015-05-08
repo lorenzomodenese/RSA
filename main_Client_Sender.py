@@ -6,6 +6,7 @@ import Client
 import Util
 from bitarray import bitarray
 import pickle
+import time
 
 
 def RiceviKeys():

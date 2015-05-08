@@ -67,7 +67,7 @@ if __name__ == "__main__":
         #scrivo il file cifrato (anche se non mi serve a niente, ma solo per farlo vedere a mazzini
         output_cifrato=bitarray()
         for i in range(0,len(cypher_list_deserialized)):
-            cifrato_bitarray=bitarray("{0:b}".format(decifrato))
+            cifrato_bitarray=bitarray("{0:b}".format(cypher_list_deserialized[i]))
             output_cifrato.extend(cifrato_bitarray)
         
         fOutCifrato=open(Util.encodedFile, "wb")
