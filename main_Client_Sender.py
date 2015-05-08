@@ -41,7 +41,7 @@ def encode_and_send(e, n):
 
     #invio cypher_list
     print "Invio il cifrato"
-    Client.InviaLista_socket(cypher_list_serialized, Util.ADDRESS_SERVER, PORT_SERVER)
+    Client.InviaLista_socket(cypher_list_serialized, Util.ADDRESS_SERVER, Util.PORT_SERVER)
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ import Server
 import Util
 import time
 import thread
+import pickle
 
 def publishKeys(nome,n,e):
     print "Pronto a fornire le chiavi..."
@@ -55,16 +56,24 @@ if __name__ == "__main__":
         print w,"Errore creazione thread"
 
     print "\nPronto a ricevere file cifrati..."
+    output = bitarray()
     socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER)
     while 1:
         sapp, ip=socket.accept()
         stringa_cifrata=Server.Server.readSocket(sapp)
         cypher_list_deserialized=pickle.loads(stringa_cifrata)
         
+        print "  -> Ricevuto tutto, ora posso decifrare!"
         
-        print "primo numero lista : ", cypher_list_deserialized[0]
-        print "primo numero lista : ", cypher_list_deserialized[len(cypher_list_deserialized)-1]
-    
+        for i in range(0,len(cypher_list_deserialized)):
+            decifrato= pow(int(cypher_list_deserialized[i]), int(d), int(n))
+            decifrato_bitarray=bitarray.bitarray("{0:b}".format(decifrato))
+            for a in range (len(decifrato_bitarray), 64)
+                decifrato_bitarray.insert(0,0)
+            output.append(decifrato_bitarray)
+
+        fOut=open(Util.decodedFile)
+        output.tofile(fOut)
     
         time.sleep(1)
 
