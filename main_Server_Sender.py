@@ -8,8 +8,8 @@ import Util
 def publishKeys(n,e):
     while 1:
         #nota che la porta deve essere diversa da quella per i dati! da cambiare...
-        socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER)
-        Server.writeSocket(s, n, e)
+        socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER_KEYS)
+        Server.writeSocket(socket, n, e)
 
 def GenerateKey():
     p=Elementary_Function.getPrimeNumber(1024)
