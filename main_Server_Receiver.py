@@ -65,6 +65,7 @@ if __name__ == "__main__":
         sapp, ip=socket.accept()
         stringa_cifrata=Server.Server.readSocket(sapp)
         cypher_list_deserialized=pickle.loads(stringa_cifrata)
+        sapp.close()
         
         ############################## parte inutile
         #scrivo il file cifrato (anche se non mi serve a niente, ma solo per farlo vedere a mazzini
