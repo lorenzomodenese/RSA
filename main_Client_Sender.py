@@ -24,14 +24,15 @@ def encode_and_send(e, n):
         bytes.fromfile(f)
     print "Data length del file:", ((bytes.length()/8)/1024), "KB\n"
 
-    for i in range(bytes.length()%64):
+    #16 corrisponde alla dimensione dei chunk da elaborare
+    for i in range(bytes.length()%16):
         bytes.extend("0")
 
     cypher_list=[]
     print "Inizio cifratura"
     start = time.time()
-    for i in range(bytes.length()/64):
-        data = bytes[(0+(64*i)):(64+(64*i))]
+    for i in range(bytes.length()/16):
+        data = bytes[(0+(16*i)):(16+(16*i))]
         message=int(data.to01(),2)
         cypher= pow(int(message), int(e), int(n))
         cypher_list.append(cypher)

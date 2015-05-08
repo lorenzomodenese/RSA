@@ -34,7 +34,7 @@ def GenerateKey():
     #mi cerco una encryption valida
     while 1:
         e=Elementary_Function.getPrimeNumber(int(dim))
-        if(fi_n%e!=0):
+        if(fi_n%e!=0 and e<fi_n):
             break
 
     print "\n  -> Encryption key: ",e
@@ -45,7 +45,7 @@ def GenerateKey():
         d+=fi_n
     print "\n  -> Decryption key: ",d
     print "\n  -> N key: ",n
-
+    print "  -> (e, fi(n))=", gcd
     return n,e,d
 
 
@@ -85,9 +85,10 @@ if __name__ == "__main__":
             decifrato= pow(int(cypher_list_deserialized[i]), int(d), int(n))
             decifrato_bitarray=bitarray("{0:b}".format(decifrato))
 
-            for a in range (len(decifrato_bitarray), 64):
+            for a in range (len(decifrato_bitarray), 16): #16 corrisponde alla dimensione dei chunk da elaborare
                 decifrato_bitarray.insert(0,0)
             output.extend(decifrato_bitarray)
+
 
         fOut=open(Util.decodedFile, "wb")
         output.tofile(fOut)
