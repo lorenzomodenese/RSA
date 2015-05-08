@@ -52,7 +52,18 @@ if __name__ == "__main__":
         thread.start_new_thread( publishKeys, ("Thread-1", n,e, ) )
     except Exception as w:
         print w,"Errore creazione thread"
+
+    print "Pronto a ricevere file cifrati..."
+    socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER)
     while 1:
-        print "Pronto a ricevere file cifrati..."
+        sapp, ip=socket.accept()
+        stringa_cifrata=Server.Server.readSocket(sapp)
+        cypher_list_deserialized=pickle.loads(stringa_cifrata)
+        
+        
+        print "primo numero lista : ", cypher_list_deserialized[0]
+        print "primo numero lista : ", cypher_list_deserialized[len(cypher_list_deserialized)-1]
+    
+    
         time.sleep(1)
 
