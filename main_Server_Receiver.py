@@ -9,6 +9,7 @@ import time
 import thread
 import pickle
 
+
 def publishKeys(nome,n,e):
     print "Pronto a fornire le chiavi..."
     #nota che la porta deve essere diversa da quella per i dati porta 9091!
@@ -20,9 +21,10 @@ def publishKeys(nome,n,e):
         sapp.close()
 
 def GenerateKey():
-    p=Elementary_Function.getPrimeNumber(1024)
+    dim=raw_input("Inserire numero di bit per le chiavi: ")
+    p=Elementary_Function.getPrimeNumber(int(dim))
     print "\n  -> Generato p casualmente: ",p
-    q=Elementary_Function.getPrimeNumber(1024)
+    q=Elementary_Function.getPrimeNumber(int(dim))
     print "\n  -> Generato q casualmente: ",q
 
     #calcolo n e fi di n
@@ -31,7 +33,7 @@ def GenerateKey():
     
     #mi cerco una encryption valida
     while 1:
-        e=Elementary_Function.getPrimeNumber(1024)
+        e=Elementary_Function.getPrimeNumber(int(dim))
         if(fi_n%e!=0):
             break
 

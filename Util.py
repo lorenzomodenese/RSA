@@ -25,8 +25,8 @@ PORT_SERVER_KEYS = 9091
 global PORT_SERVER
 PORT_SERVER = 9090
 
-global NBITS
-NBITS = 1024  #LUNGHEZZA DEI PRIMI GENERATI IN NUMERO DI BITS
+#global NBITS
+#NBITS = 10  #LUNGHEZZA DEI PRIMI GENERATI IN NUMERO DI BITS
 
 global N_BASES
 N_BASES = 128  #numero di basi da testare per il test di millen rabin, in realta saranno dimezzati perche nel codice incremento  di due
