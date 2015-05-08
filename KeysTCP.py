@@ -31,20 +31,20 @@ def keysExchange():
             try:
                 inSocket.close()
                 
-                data = ""
-                while True:
-                    string = clientSocket.recv(1024)
-                    data = data + string
-                    if len(string) < 1024:
-                        break
+                #data = ""
+                #while True:
+                #    string = clientSocket.recv(1024)
+                #    data = data + string
+                #    if len(string) < 1024:
+                #        break
                 
                 ip, port = address
-                print "\tData received from", ip, ":", port
+                print "\tConnetion received from", ip, ":", port
                 
                 outSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 outSocket.connect((outIP, outPORT))
                 
-                outSocket.send(data)
+                #outSocket.send(data)
                 
                 data = ""
                 while True:

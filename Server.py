@@ -1,3 +1,4 @@
+import pickle
 import socket
 
 class Server:   
@@ -21,8 +22,13 @@ class Server:
         return data
 
     @staticmethod
-    def writeSocket(socket, n,e):
-        socket.send(str(n))
-        tempData = socket.recv(1)
-        socket.send(str(e))
+    def writeSocket(socket, n, e):
+        
+        list = []
+        list.append(n)
+        list.append(e)
+        
+        str = pickle.dumps(list)
+        
+        socket.send(str)
 

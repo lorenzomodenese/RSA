@@ -1,5 +1,6 @@
-import socket
 import os
+import pickle
+import socket
 
 def InviaLista_socket(lista, ip, porta):
 
@@ -16,12 +17,12 @@ def RiceviData_socket(ipServer, porta):
     clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     clientsocket.connect((ipServer, int(porta)))
     
-    n=clientsocket.recv(1024)
-    clientsocket.send('y')
-    e=clientsocket.recv(1024)
+    str = clientsocket.recv(1024)
+    list = pickle.loads(str)
+    n, e = list
 
     clientsocket.close()
 
-    return n,e
+    return n, e
 
 
