@@ -63,6 +63,18 @@ if __name__ == "__main__":
         stringa_cifrata=Server.Server.readSocket(sapp)
         cypher_list_deserialized=pickle.loads(stringa_cifrata)
         
+        ############################## parte inutile
+        #scrivo il file cifrato (anche se non mi serve a niente, ma solo per farlo vedere a mazzini
+        output_cifrato=bitarray()
+        for i in range(0,len(cypher_list_deserialized)):
+            cifrato_bitarray=bitarray("{0:b}".format(decifrato))
+            output_cifrato.extend(cifrato_bitarray)
+        
+        fOutCifrato=open(Util.encodedFile, "wb")
+        output_cifrato.tofile(fOutCifrato)
+        fOutCifrato.close()
+        ##############################
+        
         print "  -> Ricevuto un file, ora posso decifrare!"
         
         output = bitarray()
