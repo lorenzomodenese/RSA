@@ -53,5 +53,6 @@ if __name__ == "__main__":
     except Exception as w:
         print w,"Errore creazione thread"
     while 1:
+        print "Pronto a ricevere file cifrati..."
         time.sleep(1)
 

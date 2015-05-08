@@ -4,6 +4,7 @@ import sys
 import Elementary_Function
 import Client
 import Util
+from bitarray import bitarray
 
 
 def RiceviKeys():
@@ -17,3 +18,5 @@ if __name__ == "__main__":
     n,e=RiceviKeys()
     print "  -> Encryption Key: ",e
     print "  -> N: ",n
+
+
