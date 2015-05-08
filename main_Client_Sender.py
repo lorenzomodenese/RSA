@@ -9,13 +9,11 @@ import pickle
 import time
 
 
-def RiceviKeys():
-    ip_server= raw_input("Inserisci IP Server: ")
+def RiceviKeys(ip_server):
     n,e=Client.RiceviData_socket(ip_server, Util.PORT_SERVER_KEYS)
-
     return n,e
 
-def encode_and_send(e, n):
+def encode_and_send(e, n,ip_server):
     bytes = bitarray()
     data = bitarray()
     output = bitarray()
@@ -45,14 +43,15 @@ def encode_and_send(e, n):
 
     #invio cypher_list
     print "Invio il cifrato"
-    Client.InviaLista_socket(cypher_list_serialized, Util.ADDRESS_SERVER, Util.PORT_SERVER)
+    Client.InviaLista_socket(cypher_list_serialized, ip_server, Util.PORT_SERVER)
 
 
 if __name__ == "__main__":
-    n,e=RiceviKeys()
+    ip_server= raw_input("Inserisci IP Server: ")
+    n,e=RiceviKeys(ip_server)
     print "  -> Encryption Key: ",e
     print "  -> N: ",n
-    encode_and_send(e,n)
+    encode_and_send(e,n,ip_server)
 
 
 
