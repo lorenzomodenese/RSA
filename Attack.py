@@ -1,3 +1,4 @@
+import bitarray
 import pickle
 import socket
 
@@ -28,7 +29,7 @@ def receiveKeys(ip, port):
 
 if __name__ == "__main__":
     
-    n, e = receiveKeys(Util.ADDRESS_SERVER, Util.PORT_GATEWAY)
+    n, e = receiveKeys(Util.ADDRESS_GATEWAY, Util.PORT_GATEWAY)
     print " -> Public Key: ( n , e ) = (", n, ",",e,")"
     #print str(ord(n))
     
@@ -45,3 +46,37 @@ if __name__ == "__main__":
         d = d + fi
     print " -> Decryption Key: d =", d
     
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind((Util.ADDRESS_SNIFFER, Util.PORT_SNIFFER))
+    s.listen(5)
+    
+    while True:
+        print "Running and waiting . . ."
+        clientSocket, address = s.accept()
+        
+        data = ""
+        while True:
+            str = clientSocket.recv(1024)
+            if str == "":
+                break
+            data = data + str
+        
+        list = pickle.loads(data)
+        
+        print "  -> Data received, decrypting . . ."
+        
+        output = bitarray()
+        for i in range(0,len(list)):
+            m = pow(int(list[i]), int(d), int(n))
+            decrypted = bitarray("{0:b}".format(m))
+
+            for a in range (len(decrypted), 64):
+                decrypted.insert(0,0)
+            output.extend(decrypted)
+
+        fout = open(Util.decodedFile, "wb")
+        output.tofile(fout)
+        fout.close()
+        
+        print "THE END"
