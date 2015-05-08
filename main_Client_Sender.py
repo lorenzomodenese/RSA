@@ -48,7 +48,7 @@ if __name__ == "__main__":
     n,e=RiceviKeys()
     print "  -> Encryption Key: ",e
     print "  -> N: ",n
-
+    encode_and_send(e,n)
 
 
 
