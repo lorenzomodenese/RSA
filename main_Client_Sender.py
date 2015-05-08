@@ -26,11 +26,11 @@ def encode_and_send(e, n):
     for i in range(bytes.length()%64):
         bytes.extend("0")
 
-    cypher_list[]
+    cypher_list=[]
     print "inizio cifratura"
     for i in range(bytes.length()/64):
         data = bytes[(0+(64*i)):(64+(64*i))]
-        message=int(data,2)
+        message=int(str(data),2)
         cypher= pow(message, e, n)
         cypher_list.append(cypher)
 

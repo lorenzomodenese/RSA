@@ -18,9 +18,9 @@ def publishKeys(nome,n,e):
 
 def GenerateKey():
     p=Elementary_Function.getPrimeNumber(1024)
-    print "  -> Generato p casualmente: ",p
+    print "\n  -> Generato p casualmente: ",p
     q=Elementary_Function.getPrimeNumber(1024)
-    print "  -> Generato q casualmente: ",q
+    print "\n  -> Generato q casualmente: ",q
 
     #calcolo n e fi di n
     n=q*p
@@ -32,20 +32,21 @@ def GenerateKey():
         if(fi_n%e!=0):
             break
 
-    print "  -> Encryption key: ",e
+    print "\n  -> Encryption key: ",e
 
     #calcolo d
     gcd, d, x =Elementary_Function.egcd(e,fi_n) #la funzione restituisce a*x+b*y=resto, a noi server x
     if(d<0):
         d+=fi_n
-    print "  -> Decryption key: ",d
+    print "\n  -> Decryption key: ",d
+    print "\n  -> N key: ",n
 
     return n,e,d
 
 
 
 if __name__ == "__main__":
-    
+    print "Inizio RSA"
     n,e,d=GenerateKey()
     try:
         #mi metto in ascolto su un nuovo thread per dare la possibilita a chiunque mi richieda le chiavi di riceverle
