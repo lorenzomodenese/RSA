@@ -22,7 +22,7 @@ class Server:
 
     @staticmethod
     def writeSocket(socket, n,e):
-        socket.send(n)
+        socket.send(str(n))
         tempData = socket.recv(1)
-        socket.send(e)
+        socket.send(str(e))
 
