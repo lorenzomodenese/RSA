@@ -6,12 +6,15 @@ import Elementary_Function
 import Util
 
 def factor(n):
-    i = 2
+    if(n%2 == 0):
+        return 2
+    
+    i = 3
     while True:
         if (n%i == 0):
             return i
         else:
-            i = i + 1
+            i = i + 2
 
 def receiveKeys(ip, port):
     
@@ -41,7 +44,7 @@ if __name__ == "__main__":
     fi = (p-1)*(q-1)
     print " -> fi(n) =", fi
     
-    gcd, d, k = egcd(e, fi)
+    gcd, d, k = Elementary_Function.egcd(e, fi)
     if(d < 0):
         d = d + fi
     print " -> Decryption Key: d =", d
@@ -54,6 +57,9 @@ if __name__ == "__main__":
     while True:
         print "Running and waiting . . ."
         clientSocket, address = s.accept()
+        
+        ip , port = address
+        print "Receiving data from", ip
         
         data = ""
         while True:
