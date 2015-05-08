@@ -7,9 +7,10 @@ import Util
 
 def publishKeys(n,e):
     while 1:
-        #nota che la porta deve essere diversa da quella per i dati! da cambiare...
+        #nota che la porta deve essere diversa da quella per i dati porta 9091!
         socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER_KEYS)
-        Server.writeSocket(socket, n, e)
+        sapp, ip=accept(socket)
+        Server.writeSocket(sapp, n, e)
 
 def GenerateKey():
     p=Elementary_Function.getPrimeNumber(1024)
@@ -47,4 +48,3 @@ if __name__ == "__main__":
         thread.start_new_thread( publishKeys, ("Thread-1", n,e, ) )
     except:
         print "Errore creazione thread"
-    ComunicoChiavi(n,e )
