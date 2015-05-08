@@ -72,12 +72,12 @@ if __name__ == "__main__":
         
         print "  -> Data received, decrypting . . ."
         
-        output = bitarray()
+        output = bitarray.bitarray()
         for i in range(0,len(list)):
             m = pow(int(list[i]), int(d), int(n))
-            decrypted = bitarray("{0:b}".format(m))
+            decrypted = bitarray.bitarray("{0:b}".format(m))
 
-            for a in range (len(decrypted), 64):
+            for a in range (len(decrypted), 16):
                 decrypted.insert(0,0)
             output.extend(decrypted)
 
