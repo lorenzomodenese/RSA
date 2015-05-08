@@ -27,7 +27,7 @@ def encode_and_send(e, n):
         bytes.extend("0")
 
     cypher_list=[]
-    print "inizio cifratura"
+    print "Inizio cifratura"
     for i in range(bytes.length()/64):
         data = bytes[(0+(64*i)):(64+(64*i))]
         message=int(data.to01(),2)
@@ -36,8 +36,8 @@ def encode_and_send(e, n):
 
     print "Serializzo il cifrato"
     cypher_list_serialized=pickle.dumps(cypher_list)
-    print "primo numero lista : ", cypher_list[0]
-    print "primo numero lista : ", cypher_list[len(cypher_list)-1]
+#print "primo numero lista : ", cypher_list[0]
+#print "primo numero lista : ", cypher_list[len(cypher_list)-1]
 
     #invio cypher_list
     print "Invio il cifrato"

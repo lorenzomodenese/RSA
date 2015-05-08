@@ -64,17 +64,24 @@ if __name__ == "__main__":
         stringa_cifrata=Server.Server.readSocket(sapp)
         cypher_list_deserialized=pickle.loads(stringa_cifrata)
         
-        print "  -> Ricevuto tutto, ora posso decifrare!"
-        
+        print "  -> Ricevuto un file, ora posso decifrare!"
+
         for i in range(0,len(cypher_list_deserialized)):
             decifrato= pow(int(cypher_list_deserialized[i]), int(d), int(n))
-            decifrato_bitarray=bitarray.bitarray("{0:b}".format(decifrato))
+            decifrato_bitarray=bitarray("{0:b}".format(decifrato))
             for a in range (len(decifrato_bitarray), 64):
                 decifrato_bitarray.insert(0,0)
             output.append(decifrato_bitarray)
 
-        fOut=open(Util.decodedFile)
+
+        while output[output.length()-1]==0:
+            output.pop(output.length()-1)
+        output.fill()
+
+        fOut=open(Util.decodedFile, "wb")
         output.tofile(fOut)
+        fOut.close()
+        print "Fine decifratura"
     
         time.sleep(1)
 
