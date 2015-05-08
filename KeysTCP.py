@@ -1,22 +1,12 @@
 import socket
 import os
 
-global inIP
-inIP = "172.1.1.1"
-
-global inPORT
-inPORT = 9091
-
-global outIP
-outIP = "172.1.2.2"
-
-global outPORT
-outPORT = 2021
+import Util
 
 def keysExchange():
     
     inSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    inSocket.bind((inIP, inPORT))
+    inSocket.bind((Util.ADDRESS_SNIFFER, Util.PORT_GATEWAY_KEYS))
     inSocket.listen(5)
     
     print "Running and waiting KeysTCP . . ."
@@ -42,7 +32,7 @@ def keysExchange():
                 print "\tConnetion received from", ip, ":", port
                 
                 outSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                outSocket.connect((outIP, outPORT))
+                outSocket.connect((Util.ADDRESS_SERVER, Util.PORT_SERVER_KEYS))
                 
                 #outSocket.send(data)
                 
