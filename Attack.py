@@ -1,3 +1,6 @@
+import pickle
+import socket
+
 import Elementary_Function
 import Util
 
@@ -11,14 +14,14 @@ def factor(n):
 
 def receiveKeys(ip, port):
     
-    clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    clientsocket.connect((ip, int(port)))
+    clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    clientSocket.connect((ip, int(port)))
     
-    n = clientsocket.recv(1024)
-    clientsocket.send('y')
-    e = clientsocket.recv(1024)
+    str = clientSocket.recv(1024)
+    list = pickle.loads(str)
+    n, e = list
 
-    clientsocket.close()
+    clientSocket.close()
 
     return n, e
 
