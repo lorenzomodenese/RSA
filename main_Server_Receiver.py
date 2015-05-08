@@ -17,6 +17,7 @@ def publishKeys(nome,n,e):
         sapp, ip=socket.accept()
         Server.Server.writeSocket(sapp, n, e)
         print "  -> Fornite keys a ",ip
+        sapp.close()
 
 def GenerateKey():
     p=Elementary_Function.getPrimeNumber(1024)
