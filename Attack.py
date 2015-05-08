@@ -29,7 +29,7 @@ def receiveKeys(ip, port):
 
 if __name__ == "__main__":
     
-    n, e = receiveKeys(Util.ADDRESS_GATEWAY, Util.PORT_GATEWAY)
+    n, e = receiveKeys(Util.ADDRESS_GATEWAY, Util.PORT_GATEWAY_KEYS)
     print " -> Public Key: ( n , e ) = (", n, ",",e,")"
     #print str(ord(n))
     
