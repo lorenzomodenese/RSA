@@ -56,10 +56,10 @@ if __name__ == "__main__":
     except Exception as w:
         print w,"Errore creazione thread"
 
-    print "\nPronto a ricevere file cifrati..."
     output = bitarray()
     socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER)
     while 1:
+        print "\nPronto a ricevere file cifrati..."
         sapp, ip=socket.accept()
         stringa_cifrata=Server.Server.readSocket(sapp)
         cypher_list_deserialized=pickle.loads(stringa_cifrata)
@@ -69,14 +69,10 @@ if __name__ == "__main__":
         for i in range(0,len(cypher_list_deserialized)):
             decifrato= pow(int(cypher_list_deserialized[i]), int(d), int(n))
             decifrato_bitarray=bitarray("{0:b}".format(decifrato))
+
             for a in range (len(decifrato_bitarray), 64):
                 decifrato_bitarray.insert(0,0)
-            output.append(decifrato_bitarray)
-
-
-        while output[output.length()-1]==0:
-            output.pop(output.length()-1)
-        output.fill()
+            output.extend(decifrato_bitarray)
 
         fOut=open(Util.decodedFile, "wb")
         output.tofile(fOut)
