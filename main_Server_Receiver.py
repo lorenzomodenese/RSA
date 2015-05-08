@@ -4,6 +4,7 @@ import sys
 import Elementary_Function
 import Server
 import Util
+from bitarray import bitarray
 import time
 import thread
 import pickle
