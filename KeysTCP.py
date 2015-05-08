@@ -6,7 +6,7 @@ import Util
 def keysExchange():
     
     inSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    inSocket.bind((Util.ADDRESS_SNIFFER, Util.PORT_GATEWAY_KEYS))
+    inSocket.bind((Util.ADDRESS_GATEWAY, Util.PORT_GATEWAY_KEYS))
     inSocket.listen(5)
     
     print "Running and waiting KeysTCP . . ."
