@@ -4,12 +4,17 @@ import sys
 import Elementary_Function
 import Server
 import Util
+import time
+import thread
 
-def publishKeys(n,e):
+def publishKeys(nome,n,e):
+    print "Pronto a fornire le chiavi"
+    #nota che la porta deve essere diversa da quella per i dati porta 9091!
+    socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER_KEYS)
     while 1:
-        #nota che la porta deve essere diversa da quella per i dati! da cambiare...
-        socket=Server.Server.initServerSocket(Util.ADDRESS_SERVER, Util.PORT_SERVER)
-        Server.writeSocket(s, n, e)
+        sapp, ip=socket.accept()
+        Server.Server.writeSocket(sapp, n, e)
+        print "  -> Fornite keys a ",ip
 
 def GenerateKey():
     p=Elementary_Function.getPrimeNumber(1024)
@@ -45,6 +50,9 @@ if __name__ == "__main__":
     try:
         #mi metto in ascolto su un nuovo thread per dare la possibilita a chiunque mi richieda le chiavi di riceverle
         thread.start_new_thread( publishKeys, ("Thread-1", n,e, ) )
-    except:
-        print "Errore creazione thread"
-    ComunicoChiavi(n,e )
+    except Exception as w:
+        print w,"Errore creazione thread"
+    while 1:
+        print "Pronto a ricevere file cifrati..."
+        time.sleep(1)
+
